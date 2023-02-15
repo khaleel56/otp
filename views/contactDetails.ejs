@@ -19,16 +19,16 @@
                 <th>Phone Number</th>
                 <th>Action</th>
             </tr>
-            <% let path='http://localhost:3000/contacts/sendmessage/' +details.firstName%>
+            <% let path=`http://localhost:${port}/contacts/sendmessage/` +details.firstName%>
                 <tr>
                     <td>
-                        <%= details.firstName %>
+                        <%= details.firstName%> 
                     </td>
                     <td>
                         <%= details.phoneNumber%>
                     </td>
                     <td>
-                        <button class="btn btn-outline-info" type="submit" onclick="location.href='<%= path%>'">Send
+                        <button class="btn btn-outline-info" type="submit" onclick="location.href='<%=path%>'">Send
                             Message</button>
                     </td>
                 </tr>
