@@ -3,10 +3,11 @@ const routes = require('./routes')
 const flash = require('connect-flash')
 var session = require('express-session');
 const mongoose = require('mongoose')
+require('dotenv').config();
 
 //db connection
 mongoose.set('strictQuery', true)
-mongoose.connect('mongodb://localhost:27017/urls', 
+mongoose.connect(process.env.MONGODB_URI, 
     {    useNewUrlParser: true, 
         useUnifiedTopology: true,
         family: 4,},
