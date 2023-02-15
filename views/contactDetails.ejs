@@ -13,26 +13,27 @@
 
 <body>
     <div class="container" style="margin-top: 20px;">
-        <table class="table table-striped text-center border">
-            <tr style="background-color: cadetblue;">
-                <th>Name</th>
-                <th>Phone Number</th>
-                <th>Action</th>
-            </tr>
-            <% let path=`http://localhost:${port}/contacts/sendmessage/` +details.firstName%>
+        <form method="GET" action="/contacts/sendmessage/<%=details.firstName%>">
+            <table class="table table-striped text-center border">
+                <tr style="background-color: cadetblue;">
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Action</th>
+                </tr>
                 <tr>
                     <td>
-                        <%= details.firstName%> 
+                        <%= details.firstName%>
                     </td>
                     <td>
                         <%= details.phoneNumber%>
                     </td>
                     <td>
-                        <button class="btn btn-outline-info" type="submit" onclick="location.href='<%=path%>'">Send
+                        <button class="btn btn-outline-info" value="submit">Send
                             Message</button>
                     </td>
                 </tr>
-        </table>
+            </table>
+        </form>
     </div>
 </body>
 

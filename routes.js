@@ -19,7 +19,7 @@ router.get('/contacts', (req, res) => {
 router.get('/contacts/:firstName', (req, res) => {
     const details = list.find(ele =>
         req.params.firstName == ele.firstName)
-    res.render('contactDetails', { details, port:process.env.PORT })
+    res.render('contactDetails', { details})
 })
 
 // draft message screen
