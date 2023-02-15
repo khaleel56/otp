@@ -5,19 +5,24 @@ const router = express.Router();
 const list = require('./contactDetails.json')
 const OtpModel = require('./Models/otpModel')
 
+//menu options screen
 router.get('/', async (req, res) => {
     res.render('index')
 })
 
+//contact list screen
 router.get('/contacts', (req, res) => {
     res.render('list', { list })
 })
+
+//contact details screen
 router.get('/contacts/:firstName', (req, res) => {
     const details = list.find(ele =>
         req.params.firstName == ele.firstName)
     res.render('contactDetails', { details, port:process.env.PORT })
 })
 
+// draft message screen
 router.get('/contacts/sendmessage/:firstName', (req, res) => {
     const details = list.find(ele =>
         req.params.firstName == ele.firstName)
@@ -26,7 +31,7 @@ router.get('/contacts/sendmessage/:firstName', (req, res) => {
     res.render('sendMessage', { details, message, flashMessage: req.flash('flashMessage') })
 })
 
-
+//perform otp sent and storeing it in db
 router.post('/contacts/sendmessage', async (req, res) => {
     try {
         const details = list.find(ele => req.body.firstName == ele.firstName)
@@ -43,6 +48,7 @@ router.post('/contacts/sendmessage', async (req, res) => {
     }
 });
 
+//sent messages
 router.get('/messages', async (req, res) => {
     const messageList = await OtpModel.find().sort({ createdAt: -1 })
     res.render('messages', { messageList })
